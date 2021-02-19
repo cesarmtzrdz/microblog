@@ -18,5 +18,7 @@ class TestController extends Controller
         echo "this is the body content: " . $bodyContent;
         
         echo "yesssssss";
+
+        return redirect()->route('test')->with('msj', "Msg: {$bodyContent}");
     }
 }
