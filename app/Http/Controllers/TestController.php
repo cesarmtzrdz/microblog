@@ -5,11 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 
-class HomeController extends Controller
+class TestController extends Controller
 {
-    function index() {
+    function index(Request $request) {
         
+        if ($request->hasHeader('X-Uber-Signature')) {
+            $value = $request->header('X-Uber-Signature');
+            echo "this is the header: " . $value
+        }
 
+        $bodyContent = $request->getContent();
+        echo "this is the body content: " . $bodyContent
+        
         echo "yesssssss";
     }
 }
