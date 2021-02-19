@@ -3,22 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 
 class TestController extends Controller
 {
     function index(Request $request) {
         
-        info("---------- INDEX------------");
+        Log::info("---------- INDEX------------");
 
         if ($request->hasHeader('X-Uber-Signature')) {
             $value = $request->header('X-Uber-Signature');
-            info("this is the header: " . $value);
+            Log::info("this is the header: " . $value);
         }
 
         $bodyContent = $request->getContent();
-        info("this is the body content: " . $bodyContent);
+        Log::info("this is the body content: " . $bodyContent);
         
-        info("yesssssss");
+        Log::info("yesssssss");
     }
 }
